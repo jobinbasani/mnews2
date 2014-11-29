@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/action_screenshot" android:title="@string/menuScreenShot"></item>
+    <item android:id="@+id/action_main_feedback" android:title="@string/action_feedback" android:showAsAction="never" android:orderInCategory="100"></item>
+    <item android:id="@+id/action_main_rate_app" android:title="@string/action_rate_app" android:showAsAction="never" android:orderInCategory="200"></item>
+
+</menu>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <color name="maroonColor">#BA0920</color>
+    <color name="whiteColor">#ffffff</color>
+    <color name="greyColor">#4F4143</color>
+    
+    <style name="spinnerItemStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/maroonColor</item>
+    </style>
+    
+</resources>

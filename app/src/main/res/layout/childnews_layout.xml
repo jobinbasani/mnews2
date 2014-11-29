@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/childNewsProvider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/maroonColor"
+        android:padding="@dimen/gapDimension"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/whiteColor" />
+    
+    <ImageView
+        android:id="@+id/newsDetailsOverflowMenuIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/card_menu_button_overflow" />
+    
+    <TextView
+        android:id="@+id/childNewsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/newsDetailsOverflowMenuIcon"
+        android:paddingBottom="@dimen/gapDimension"
+        android:paddingTop="@dimen/gapDimension"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/greyColor"
+        android:textStyle="bold" />
+
+</RelativeLayout>
