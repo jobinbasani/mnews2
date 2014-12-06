@@ -1,5 +1,21 @@
 package com.jobinbasani.news.ml;
 
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.Loader;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.google.analytics.tracking.android.EasyTracker;
 import com.jobinbasani.news.ml.constants.NewsConstants;
 import com.jobinbasani.news.ml.fragments.CategorySelector;
@@ -10,23 +26,7 @@ import com.jobinbasani.news.ml.provider.NewsDataContract.NewsDataEntry;
 import com.jobinbasani.news.ml.receiver.NewsReceiver;
 import com.jobinbasani.news.ml.util.NewsUtil;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.app.Activity;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.CursorLoader;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.Loader;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.support.v4.content.LocalBroadcastManager;
-import android.view.Menu;
-import android.view.MenuItem;
-
-public class MainActivity extends Activity implements LoaderCallbacks<Cursor>, NewsDataHandlers {
+public class MainActivity extends ActionBarActivity implements LoaderCallbacks<Cursor>, NewsDataHandlers {
 	
 	CategorySelector categorySelector;
 	NewsWidget newsWidget;
@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>, N
 		long lastLoaded = prefs.getLong(NewsConstants.LAST_LOADED, 0);
 		if(lastLoaded == 0){
 			setContentView(R.layout.splashscreen_layout);
-			getActionBar().hide();
+			getSupportActionBar().hide();
 		}else{
 			setContentView(R.layout.activity_main);
 		}
@@ -125,7 +125,7 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>, N
 		if(firstLoad){
 			try{
 				setContentView(R.layout.activity_main);
-				getActionBar().show();
+				getSupportActionBar().show();
 			}catch(Exception e){
 				
 			}

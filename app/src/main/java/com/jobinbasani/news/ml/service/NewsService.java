@@ -222,7 +222,7 @@ public class NewsService extends IntentService {
 				    			  try{
                                       detailsEventType = detailsParser.next();
                                   }catch (Exception e){
-                                      e.printStackTrace();
+
                                   }
 
 				    		 }

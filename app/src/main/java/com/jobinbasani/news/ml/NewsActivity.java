@@ -9,6 +9,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,11 +21,10 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.ShareActionProvider;
 import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
-public class NewsActivity extends Activity implements OnKeyListener{
+public class NewsActivity extends ActionBarActivity implements OnKeyListener{
 	
 	private String url;
 	private String newsTitle;
@@ -62,7 +64,7 @@ public class NewsActivity extends Activity implements OnKeyListener{
 	 */
 	private void setupActionBar() {
 
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 	}
 
@@ -77,7 +79,7 @@ public class NewsActivity extends Activity implements OnKeyListener{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.news, menu);
 		MenuItem shareItem = menu.findItem(R.id.newsShareAction);
-		mShareActionProvider = (ShareActionProvider) shareItem.getActionProvider();
+		mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
 		setShareIntent();
 		return true;
 	}

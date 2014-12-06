@@ -1,12 +1,12 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/action_news_open_browser"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="@string/openLinkBrowser"/>
-    <item android:id="@+id/news_feedback" android:title="@string/action_feedback" android:showAsAction="never" android:orderInCategory="200"></item>
-    <item android:id="@+id/news_rate_app" android:title="@string/action_rate_app" android:showAsAction="never" android:orderInCategory="300"></item>
-    <item android:id="@+id/newsShareAction" android:title="@string/shareLink" android:showAsAction="always" android:actionProviderClass="android.widget.ShareActionProvider"></item>
+    <item android:id="@+id/news_feedback" android:title="@string/action_feedback" app:showAsAction="never" android:orderInCategory="200"></item>
+    <item android:id="@+id/news_rate_app" android:title="@string/action_rate_app" app:showAsAction="never" android:orderInCategory="300"></item>
+    <item android:id="@+id/newsShareAction" android:title="@string/shareLink" app:showAsAction="always" android:actionProviderClass="android.widget.ShareActionProvider"></item>
 
 </menu>

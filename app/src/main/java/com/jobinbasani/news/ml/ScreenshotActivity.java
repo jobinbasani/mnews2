@@ -1,36 +1,36 @@
 package com.jobinbasani.news.ml;
 
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.jobinbasani.news.ml.constants.NewsConstants;
-import com.jobinbasani.news.ml.util.NewsUtil;
-
+import android.content.Context;
+import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.media.MediaScannerConnection.OnScanCompletedListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.app.Activity;
-import android.content.Intent;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.ShareActionProvider;
-import android.support.v4.app.NavUtils;
 
-public class ScreenshotActivity extends Activity {
+import com.google.analytics.tracking.android.EasyTracker;
+import com.jobinbasani.news.ml.constants.NewsConstants;
+import com.jobinbasani.news.ml.util.NewsUtil;
+
+public class ScreenshotActivity extends ActionBarActivity {
 	
-	private String scrShotFile;
 	private Handler handler = new Handler();
-	private ShareActionProvider mShareActionProvider;
+    private Uri imageUri;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_screenshot);
+        final Context ctx = this;
 		// Show the Up button in the action bar.
 		setupActionBar();
-		scrShotFile = getIntent().getStringExtra(NewsConstants.SCR_SHOT_PATH_KEY);
+        String scrShotFile = getIntent().getStringExtra(NewsConstants.SCR_SHOT_PATH_KEY);
 		if(scrShotFile!=null){
 			final ImageView imgView = (ImageView) findViewById(R.id.screenshotImageView);
 			
@@ -44,13 +44,14 @@ public class ScreenshotActivity extends Activity {
 						@Override
 						public void run() {
 							imgView.setImageURI(uri);
-							if(mShareActionProvider!=null){
+                            imageUri = uri;
+							/*if(mShareActionProvider!=null){
 								Intent shareIntent = new Intent();
 								shareIntent.setAction(Intent.ACTION_SEND);
 								shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
 								shareIntent.setType("image/png");
 								mShareActionProvider.setShareIntent(shareIntent);
-							}
+							}*/
 						}
 					});
 				}
@@ -75,7 +76,7 @@ public class ScreenshotActivity extends Activity {
 	 */
 	private void setupActionBar() {
 
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 	}
 
@@ -89,8 +90,7 @@ public class ScreenshotActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.screenshot, menu);
-		MenuItem shareItem = menu.findItem(R.id.actionScreenshotShare);
-		mShareActionProvider = (ShareActionProvider) shareItem.getActionProvider();
+
 		return true;
 	}
 
@@ -113,6 +113,15 @@ public class ScreenshotActivity extends Activity {
 		case R.id.scrshot_rate_app:
 			startActivity(NewsUtil.getPlaystoreListing(getPackageName()));
 			break;
+        case R.id.actionScreenshotShare:
+            if(imageUri!=null){
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+                shareIntent.setType("image/png");
+                startActivity(Intent.createChooser(shareIntent, "Share screenshot"));
+            }
+            break;
 		}
 		return super.onOptionsItemSelected(item);
 	}

@@ -1,5 +1,5 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/newsOptionsOpenLink" android:showAsAction="never" android:title="@string/openLink" android:orderInCategory="100"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/newsOptionsOpenLink" app:showAsAction="never" android:title="@string/openLink" android:orderInCategory="100"></item>
     <item android:id="@+id/newsOptionsOpenLinkBrowser" android:orderInCategory="200" android:title="@string/openLinkBrowser"></item>
     <item android:id="@+id/newsOptionsShare" android:orderInCategory="300" android:title="@string/shareLink"></item>
 
